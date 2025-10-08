@@ -1,6 +1,6 @@
 def call(Map config) { 
     def STORE_DIR = "/My-Docker/Dev-Service"
-    def PROJECT_NAME = PROJECT_NAME.toLowerCase().replaceAll('[^a-z0-9_-]', '-')
+    def PROJECT_NAME = env.JOB_NAME.tokenize('/')[0].toLowerCase().replaceAll('[^a-z0-9_-]', '-')
     def envFile
         switch(config.envName) {
             case "main":
