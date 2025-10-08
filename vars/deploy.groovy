@@ -1,6 +1,6 @@
 def call(Map config) {
     def STORE_DIR = "/My-Docker/Dev-Service"
-    def PROJECT_NAME = env.JOB_NAME.tokenize('/')[0].toLowerCase().replaceAll('[^a-z0-9_-]', '-')
+    // def PROJECT_NAME = env.JOB_NAME.tokenize('/')[0].toLowerCase().replaceAll('[^a-z0-9_-]', '-')
     def envFile
         switch(config.envName) {
             case "main":
@@ -15,7 +15,8 @@ def call(Map config) {
             default:
                 error "Unknown environment: ${config.envName}"
         }
-    def composeFiles = "-p ${PROJECT_NAME}-${config.envName} -f docker-compose.base.yml -f docker-compose.${config.envName}.yml"
+    // def composeFiles = "-p ${PROJECT_NAME}-${config.envName} -f docker-compose.base.yml -f docker-compose.${config.envName}.yml"
+    def composeFiles = "-f docker-compose.base.yml -f docker-compose.${config.envName}.yml"
 
     echo 'Starting containers...'
     sh """
