@@ -16,7 +16,7 @@ def call(Map config) {
                 error "Unknown environment: ${config.envName}"
         }
     def composeFiles = "-p ${PROJECT_NAME}-${config.envName} -f docker-compose.base.yml -f docker-compose.${config.envName}.yml"
-    def composeFiles = "-f docker-compose.base.yml -f docker-compose.${config.envName}.yml"
+    // def composeFiles = "-f docker-compose.base.yml -f docker-compose.${config.envName}.yml"
 
     echo "Building Docker images with docker-compose..."
     sh """
