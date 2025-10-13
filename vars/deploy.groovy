@@ -12,6 +12,15 @@ def call(Map config) {
             case "test":
                 envFile = ".env.test"
                 break
+            case "master":
+                envFile = ".env.master"
+                break
+            case "d":
+                envFile = ".env.d"
+                break
+            case "t":
+                envFile = ".env.t"
+                break
             default:
                 error "Unknown environment: ${config.envName}"
         }
